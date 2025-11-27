@@ -1,0 +1,57 @@
+bin/
+obj/
+
+# User-specific files
+*.user
+*.suo
+*.userosscache
+*.sln.docstates
+*.DotSettings.user
+*.userprefs
+
+# Visual Studio
+.vs/
+
+# JetBrains
+.idea/
+*.iml
+
+# ReSharper
+_ReSharper.Caches/
+
+# NuGet
+packages/
+*.nupkg
+.nuget/
+
+# Build results
+*.dll
+*.exe
+*.pdb
+*.cache
+
+# Logs & temp
+*.log
+*.tmp
+*.temp
+*.bak
+
+# Database files
+*.mdf
+*.ldf
+
+# OS junk
+Thumbs.db
+.DS_Store
+ehthumbs.db
+Desktop.ini
+
+*.sln.DotSettings
+
+appsettings.json
+
+*.DotSettings
+*.DotSettings.user
+
+appsettings*.json
+!appsettings.example.json   # if you have a template to keep
