@@ -1,0 +1,120 @@
+﻿@page
+@model WebApplication1.Pages.Services.IndexModel
+
+<h2>My Services</h2>
+
+<form method="post" asp-page-handler="Load" class="mb-4">
+    <div class="row">
+        <div class="col-md-3">
+            <label asp-for="BusinessId" class="form-label">Business Id</label>
+            <input asp-for="BusinessId" class="form-control" />
+        </div>
+        <div class="col-md-2">
+            <label asp-for="Skip" class="form-label">Skip</label>
+            <input asp-for="Skip" class="form-control" />
+        </div>
+        <div class="col-md-2">
+            <label asp-for="Take" class="form-label">Take</label>
+            <input asp-for="Take" class="form-control" />
+        </div>
+        <div class="col-md-3 align-self-end">
+            <button type="submit" class="btn btn-secondary mt-2">Load Services</button>
+        </div>
+    </div>
+</form>
+
+@if (!string.IsNullOrEmpty(Model.Message))
+{
+    <div class="alert alert-info">@Model.Message</div>
+}
+
+@if (Model.BusinessId > 0)
+{
+    <hr />
+    <h3>Add Service</h3>
+
+    <form method="post" asp-page-handler="Add" class="mb-4">
+        <input type="hidden" asp-for="BusinessId" />
+
+        <div class="row">
+            <div class="col-md-4 mb-3">
+                <label asp-for="NewService.Name" class="form-label"></label>
+                <input asp-for="NewService.Name" class="form-control" />
+                <span asp-validation-for="NewService.Name" class="text-danger"></span>
+            </div>
+            <div class="col-md-2 mb-3">
+                <label asp-for="NewService.DurationMin" class="form-label"></label>
+                <input asp-for="NewService.DurationMin" class="form-control" />
+                <span asp-validation-for="NewService.DurationMin" class="text-danger"></span>
+            </div>
+            <div class="col-md-2 mb-3">
+                <label asp-for="NewService.Price" class="form-label"></label>
+                <input asp-for="NewService.Price" class="form-control" />
+                <span asp-validation-for="NewService.Price" class="text-danger"></span>
+            </div>
+            <div class="col-md-3 mb-3 align-self-end">
+                <button type="submit" class="btn btn-primary mt-2">Add Service</button>
+            </div>
+        </div>
+    </form>
+
+    <hr />
+    <h3>Service List</h3>
+
+    @if (Model.Services != null && Model.Services.Any())
+    {
+        <table class="table table-striped">
+            <thead>
+                <tr>
+                    <th>Service Id</th>
+                    <th>Name</th>
+                    <th>Duration (min)</th>
+                    <th>Price</th>
+                    <th>Is Active</th>
+                    <th></th>
+                </tr>
+            </thead>
+            <tbody>
+                @foreach (var s in Model.Services)
+                {
+                    <tr>
+                        <td>@s.ServiceId</td>
+                        <td>@s.Name</td>
+                        <td>@s.DurationMin</td>
+                        <td>@s.Price</td>
+                        <td>@s.IsActive</td>
+                        <td>
+                            <div class="d-flex gap-2">
+                                @if (s.IsActive)
+                                {
+                                    <form method="post" asp-page-handler="Disable" class="d-inline">
+                                        <input type="hidden" name="BusinessId" value="@Model.BusinessId" />
+                                        <input type="hidden" name="serviceId" value="@s.ServiceId" />
+                                        <button type="submit" class="btn btn-warning btn-sm">Disable</button>
+                                    </form>
+                                }
+
+                                <form method="post" asp-page-handler="Delete" class="d-inline">
+                                    <input type="hidden" name="BusinessId" value="@Model.BusinessId" />
+                                    <input type="hidden" name="serviceId" value="@s.ServiceId" />
+                                    <button type="submit" class="btn btn-danger btn-sm"
+                                            onclick="return confirm('Delete this service?');">
+                                        Delete
+                                    </button>
+                                </form>
+                            </div>
+                        </td>
+                    </tr>
+                }
+            </tbody>
+        </table>
+    }
+    else
+    {
+        <p>No services found.</p>
+    }
+}
+
+@section Scripts {
+    <partial name="_ValidationScriptsPartial" />
+}

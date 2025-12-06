@@ -1,8 +1,11 @@
-﻿using Business.SmartAppt.Models;
+﻿using System;
+using System.Threading.Tasks;
+using Business.SmartAppt.Models;
 using Business.SmartAppt.Services;
+using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 
-namespace SmartAppt.API.Controllers
+namespace SmartAppt.Api.Controllers
 {
     [ApiController]
     [Route("api/[controller]")]
@@ -15,66 +18,86 @@ namespace SmartAppt.API.Controllers
             _customerService = customerService;
         }
 
-        private IActionResult GetStatusCodeResult<T>(T result, int code)
+        // POST: api/customer/{customerId}/bookings
+        [HttpPost("{customerId:int}/bookings")]
+      
+        public async Task<BaseResponse> CreateBooking(
+            int customerId,
+            [FromBody] CreateBookingDto dto)
         {
-            return code switch
-            {
-                0 => Ok(result),
-                1 => NotFound(result),
-                2 => BadRequest(result),
-                _ => StatusCode(500, result)
-            };
+            var response = await _customerService.CreateBookingAsync(customerId, dto);
+            return response;
         }
 
-        [HttpPost("{customerId}/bookings")]
-        public async Task<IActionResult> CreateBooking(int customerId, [FromBody] CreateBookingDto dto)
+        // PUT: api/customer/{customerId}/bookings/{bookingId}
+        [HttpPut("{customerId:int}/bookings/{bookingId:int}")]
+        [ProducesResponseType(typeof(BaseResponse), StatusCodes.Status200OK)]
+        public async Task<BaseResponse> UpdateBooking(
+            int customerId,
+            int bookingId,
+            [FromBody] UpdateBookingDto dto)
         {
-            var result = await _customerService.CreateBookingAsync(customerId, dto);
-            return GetStatusCodeResult(result, result.StatusCode);
+            var response = await _customerService.UpdateBookingAsync(customerId, bookingId, dto);
+            return response;
         }
 
-        [HttpPut("{customerId}/bookings/{bookingId}")]
-        public async Task<IActionResult> UpdateBooking(int customerId, int bookingId, [FromBody] UpdateBookingDto dto)
+        // DELETE: api/customer/{customerId}/bookings/{bookingId}
+        [HttpDelete("{customerId:int}/bookings/{bookingId:int}")]
+        [ProducesResponseType(typeof(BaseResponse), StatusCodes.Status200OK)]
+        public async Task<BaseResponse> DeleteBooking(
+            int customerId,
+            int bookingId)
         {
-            var result = await _customerService.UpdateBookingAsync(customerId, bookingId, dto);
-            return GetStatusCodeResult(result, result.StatusCode);
+            var response = await _customerService.DeleteBookingAsync(customerId, bookingId);
+            return response;
         }
 
-        [HttpDelete("{customerId}/bookings/{bookingId}")]
-        public async Task<IActionResult> DeleteBooking(int customerId, int bookingId)
+        // POST: api/customer/{customerId}/bookings/{bookingId}/cancel
+        [HttpPost("{customerId:int}/bookings/{bookingId:int}/cancel")]
+        [ProducesResponseType(typeof(BaseResponse), StatusCodes.Status200OK)]
+        public async Task<BaseResponse> CancelBooking(
+            int customerId,
+            int bookingId)
         {
-            var result = await _customerService.DeleteBookingAsync(customerId, bookingId);
-            return GetStatusCodeResult(result, result.StatusCode);
+            var response = await _customerService.CancelBookingAsync(customerId, bookingId);
+            return response;
         }
 
-        [HttpPost("{customerId}/bookings/{bookingId}/cancel")]
-        public async Task<IActionResult> CancelBooking(int customerId, int bookingId)
+        // GET: api/customer/{customerId}/bookings?skip=0&take=10
+        [HttpGet("{customerId:int}/bookings")]
+        [ProducesResponseType(typeof(BookingListDto), StatusCodes.Status200OK)]
+        public async Task<BaseResponse> GetMyBookings(
+            int customerId,
+            [FromQuery] int skip = 0,
+            [FromQuery] int take = 10)
         {
-            var result = await _customerService.CancelBookingAsync(customerId, bookingId);
-            return GetStatusCodeResult(result, result.StatusCode);
+            var response = await _customerService.GetMyBookingsAsync(customerId, skip, take);
+            return response;
         }
 
-        [HttpGet("{customerId}/bookings")]
-        public async Task<IActionResult> GetMyBookings(int customerId, [FromQuery] int skip = 0, [FromQuery] int take = 10)
+        // GET: api/customer/free-slots?businessId=1&serviceId=2&date=2025-12-05
+        [HttpGet("free-slots")]
+        [ProducesResponseType(typeof(DailySlotsDto), StatusCodes.Status200OK)]
+        public async Task<BaseResponse> GetDailyFreeSlots(
+            [FromQuery] int businessId,
+            [FromQuery] int serviceId,
+            [FromQuery] DateOnly date)
         {
-            var result = await _customerService.GetMyBookingsAsync(customerId, skip, take);
-            return GetStatusCodeResult(result, result.StatusCode);
+            var response = await _customerService.GetDailyFreeSlots(businessId, serviceId, date);
+            return response;
         }
 
-
-        [HttpGet("/api/businesses/{businessId}/services/{serviceId}/calendar/{year}/{month}/{day}/slots")]
-        public async Task<IActionResult> GetDailyFreeSlots(int businessId, int serviceId, int year, int month, int day)
+        // GET: api/customer/monthly-calendar?businessId=1&serviceId=2&month=12&year=2025
+        [HttpGet("monthly-calendar")]
+        [ProducesResponseType(typeof(CalendarDto), StatusCodes.Status200OK)]
+        public async Task<BaseResponse> GetMonthlyCalendar(
+            [FromQuery] int businessId,
+            [FromQuery] int serviceId,
+            [FromQuery] int month,
+            [FromQuery] int year)
         {
-            var date = new DateOnly(year, month, day);
-            var result = await _customerService.GetDailyFreeSlots(businessId, serviceId, date);
-            return GetStatusCodeResult(result, result.StatusCode);
-        }
-
-        [HttpGet("/api/businesses/{businessId}/services/{serviceId}/calendar/{year}/{month}")]
-        public async Task<IActionResult> GetMonthlyCalendar(int businessId, int serviceId, int year, int month)
-        {
-            var result = await _customerService.GetMonthlyCalendar(businessId, serviceId, month, year);
-            return GetStatusCodeResult(result, result.StatusCode);
+            var response = await _customerService.GetMonthlyCalendar(businessId, serviceId, month, year);
+            return response;
         }
     }
 }

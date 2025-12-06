@@ -34,7 +34,7 @@ namespace Data.SmartAppt.SQL.Services.Implementation
             cmd.Parameters.Add(new SqlParameter("@Phone", SqlDbType.NVarChar, 50)
             { Value = !string.IsNullOrEmpty(businessData.Phone) ? businessData.Phone : DBNull.Value });
             cmd.Parameters.Add(new SqlParameter("@TimeZone", SqlDbType.NVarChar, 100)
-            { Value = !string.IsNullOrEmpty(businessData.TimeZoneIana) ? businessData.TimeZoneIana : DBNull.Value });
+            { Value = !string.IsNullOrEmpty(businessData.TimeZone) ? businessData.TimeZone : DBNull.Value });
             cmd.Parameters.Add(new SqlParameter("@SettingsJson", SqlDbType.NVarChar, -1)
             { Value = !string.IsNullOrEmpty(businessData.SettingsJson) ? businessData.SettingsJson : DBNull.Value });
 
@@ -63,7 +63,7 @@ namespace Data.SmartAppt.SQL.Services.Implementation
                     Name = reader.GetString(reader.GetOrdinal("Name")),
                     Email = reader.IsDBNull(reader.GetOrdinal("Email")) ? null : reader.GetString(reader.GetOrdinal("Email")),
                     Phone = reader.IsDBNull(reader.GetOrdinal("Phone")) ? null : reader.GetString(reader.GetOrdinal("Phone")),
-                    TimeZoneIana = reader.GetString(reader.GetOrdinal("TimeZone")),
+                    TimeZone = reader.GetString(reader.GetOrdinal("TimeZone")),
                     SettingsJson = reader.IsDBNull(reader.GetOrdinal("SettingsJson")) ? null : reader.GetString(reader.GetOrdinal("SettingsJson")),
                     CreatedAtUtc = reader.GetDateTime(reader.GetOrdinal("CreatedAtUtc"))
                 };
@@ -92,7 +92,7 @@ namespace Data.SmartAppt.SQL.Services.Implementation
                     Name = reader.GetString(reader.GetOrdinal("Name")),
                     Email = reader.IsDBNull(reader.GetOrdinal("Email")) ? null : reader.GetString(reader.GetOrdinal("Email")),
                     Phone = reader.IsDBNull(reader.GetOrdinal("Phone")) ? null : reader.GetString(reader.GetOrdinal("Phone")),
-                    TimeZoneIana = reader.GetString(reader.GetOrdinal("TimeZone")),
+                    TimeZone = reader.GetString(reader.GetOrdinal("TimeZone")),
                     SettingsJson = reader.IsDBNull(reader.GetOrdinal("SettingsJson")) ? null : reader.GetString(reader.GetOrdinal("SettingsJson")),
                     CreatedAtUtc = reader.GetDateTime(reader.GetOrdinal("CreatedAtUtc"))
                 });
@@ -116,7 +116,7 @@ namespace Data.SmartAppt.SQL.Services.Implementation
             cmd.Parameters.Add(new SqlParameter("@Phone", SqlDbType.NVarChar, 50)
             { Value = !string.IsNullOrEmpty(businessData.Phone) ? businessData.Phone : DBNull.Value });
             cmd.Parameters.Add(new SqlParameter("@TimeZone", SqlDbType.NVarChar, 100)
-            { Value = !string.IsNullOrEmpty(businessData.TimeZoneIana) ? businessData.TimeZoneIana : DBNull.Value });
+            { Value = !string.IsNullOrEmpty(businessData.TimeZone) ? businessData.TimeZone : DBNull.Value });
             cmd.Parameters.Add(new SqlParameter("@SettingsJson", SqlDbType.NVarChar, -1)
             { Value = !string.IsNullOrEmpty(businessData.SettingsJson) ? businessData.SettingsJson : DBNull.Value });
 

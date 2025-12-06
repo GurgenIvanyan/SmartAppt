@@ -1,6 +1,6 @@
 ﻿namespace Business.SmartAppt.Models
 {
-    public class BookingDto : ResponseBase
+    public class BookingDto : BaseResponse
     {
         public int BookingId { get; set; }
         public int BusinessId { get; set; }

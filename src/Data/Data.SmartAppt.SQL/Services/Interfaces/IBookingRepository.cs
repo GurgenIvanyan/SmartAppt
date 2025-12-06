@@ -12,5 +12,6 @@ namespace Data.SmartAppt.SQL.Services.Interfaces
         Task DeleteAsync(int bookingId);
         Task CancelAsync(int bookingId);
         Task<Dictionary<DateOnly, int>> GetBookingsCountByBusinessAsync(int businessId, int serviceId, DateOnly startDate, DateOnly endDate);
+        Task ConfirmAsync(int bookingId);
     }
 }

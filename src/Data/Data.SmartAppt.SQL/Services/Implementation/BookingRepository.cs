@@ -196,5 +196,16 @@ namespace Data.SmartAppt.SQL.Services.Implementation
 
             return result;
         }
+        public virtual async Task ConfirmAsync(int bookingId)
+        {
+            await EnsureOpenAsync();
+
+            using var cmd = new SqlCommand("core.Booking_Confirm", (SqlConnection)_connection);
+            cmd.CommandType = CommandType.StoredProcedure;
+            cmd.Parameters.Add(new SqlParameter("@BookingId", SqlDbType.Int) { Value = bookingId });
+
+            await cmd.ExecuteNonQueryAsync();
+        }
+
     }
 }

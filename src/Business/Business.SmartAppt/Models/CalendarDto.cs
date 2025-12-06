@@ -1,6 +1,6 @@
 ﻿namespace Business.SmartAppt.Models
 {
-    public class CalendarDto : ResponseBase
+    public class CalendarDto : BaseResponse
     {
         public int Month { get; set; }
         public int Year { get; set; }
