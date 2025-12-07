@@ -21,6 +21,7 @@
 }
 
 
+
 html, body {
     height: 100%;
 }
@@ -175,6 +176,7 @@ body {
 }
 
 
+
 h1, h2, h3, h4 {
     color: #f9fafb;
     letter-spacing: 0.03em;
@@ -196,7 +198,6 @@ h2 {
         border-radius: 999px;
         background: linear-gradient(90deg, var(--accent), transparent);
     }
-
 
 
 .form-label {
@@ -234,6 +235,7 @@ h2 {
 .text-danger {
     font-size: 0.8rem;
 }
+
 
 
 .btn-primary,
@@ -283,6 +285,7 @@ h2 {
 }
 
 
+
 .table {
     color: var(--app-text);
     font-size: 0.9rem;
@@ -312,14 +315,12 @@ h2 {
         }
 
 
-
 .alert-info {
     border-radius: var(--radius-md);
     background: rgba(59, 130, 246, 0.13);
     border-color: rgba(59, 130, 246, 0.4);
     color: #bfdbfe;
 }
-
 
 .badge.bg-success {
     background: linear-gradient(135deg, #22c55e, #16a34a) !important;
@@ -332,6 +333,7 @@ h2 {
 .badge.bg-secondary {
     background: linear-gradient(135deg, #6b7280, #4b5563) !important;
 }
+
 
 
 .app-footer {
@@ -416,6 +418,7 @@ h2 {
 .calendar-legend .badge {
     border-radius: 999px;
     font-size: 0.78rem;
+}
 
 
 .dashboard-wrapper {
@@ -438,7 +441,7 @@ h2 {
     overflow: hidden;
 }
 
-  
+ 
     .hero-card::before {
         content: "";
         position: absolute;
@@ -531,7 +534,6 @@ h2 {
     color: #6b7280;
 }
 
-/* links list */
 .hero-links {
     list-style: none;
     padding: 0;
@@ -666,6 +668,7 @@ h2 {
     max-width: 1200px;
 }
 
+
 .text-glow {
     color: #f5f7ff;
     text-shadow: 0 0 12px rgba(102, 178, 255, 0.6);
@@ -732,7 +735,6 @@ h2 {
     color: rgba(186, 204, 255, 0.8);
 }
 
-
 .gradient-card-1 {
     box-shadow: 0 0 0 1px rgba(0, 201, 255, 0.3), 0 16px 40px rgba(0, 0, 0, 0.75);
 }
@@ -748,6 +750,7 @@ h2 {
 .gradient-card-4 {
     box-shadow: 0 0 0 1px rgba(180, 144, 255, 0.35), 0 16px 40px rgba(0, 0, 0, 0.75);
 }
+
 
 .panel-card {
     border-radius: 18px;
@@ -838,16 +841,17 @@ input,
 select,
 textarea {
     color: #ffffff;
-    background-color: rgba(6, 20, 45, 0.95); 
+    background-color: rgba(6, 20, 45, 0.95);
     border-color: #1d9fff;
 }
 
-  
+    
     .form-control::placeholder,
     input::placeholder,
     textarea::placeholder {
         color: rgba(255, 255, 255, 0.55);
     }
+
 
 .table,
 .table th,

@@ -16,11 +16,10 @@ namespace WebApplication1.Pages
             _httpClientFactory = httpClientFactory;
         }
 
-        // Ո՞ր бизнеса համար ենք dashboard ցույց տալիս (query-ից կգա ?BusinessId=1)
         [BindProperty(SupportsGet = true)]
         public int BusinessId { get; set; } = 1;
 
-        // Քարտերի թվերը (ActiveServices-ը հանված է)
+       
         public int TodayBookings { get; set; }
         public int PendingBookings { get; set; }
         public int CanceledToday { get; set; }
@@ -31,7 +30,7 @@ namespace WebApplication1.Pages
         {
             var client = _httpClientFactory.CreateClient("SmartApptApi");
 
-            // --- Այսօրվա booking-ները ---
+           
             var today = DateOnly.FromDateTime(DateTime.UtcNow);
             var dateStr = today.ToString("yyyy-MM-dd");
 
