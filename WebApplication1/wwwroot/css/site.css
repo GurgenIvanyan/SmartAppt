@@ -1,4 +1,4 @@
-﻿/* -------- Root colors & base -------- */
+﻿
 
 :root {
     --app-bg: #020617;
@@ -20,7 +20,6 @@
     --transition-fast: 0.18s ease-out;
 }
 
-/* -------- Page background & glow -------- */
 
 html, body {
     height: 100%;
@@ -56,7 +55,7 @@ body {
     }
 }
 
-/* -------- Navbar -------- */
+
 
 .app-header {
     position: sticky;
@@ -147,7 +146,6 @@ body {
             transform: scaleX(1);
         }
 
-/* -------- Main shell -------- */
 
 .app-main {
     position: relative;
@@ -176,7 +174,6 @@ body {
     }
 }
 
-/* -------- Typography -------- */
 
 h1, h2, h3, h4 {
     color: #f9fafb;
@@ -200,7 +197,7 @@ h2 {
         background: linear-gradient(90deg, var(--accent), transparent);
     }
 
-/* -------- Forms & inputs -------- */
+
 
 .form-label {
     font-size: 0.8rem;
@@ -233,12 +230,11 @@ h2 {
         color: rgba(148, 163, 184, 0.7);
     }
 
-/* Validation error */
+
 .text-danger {
     font-size: 0.8rem;
 }
 
-/* -------- Buttons -------- */
 
 .btn-primary,
 .btn-secondary,
@@ -286,7 +282,6 @@ h2 {
     font-size: 0.78rem;
 }
 
-/* -------- Tables -------- */
 
 .table {
     color: var(--app-text);
@@ -316,7 +311,7 @@ h2 {
             transform: translateY(-1px);
         }
 
-/* -------- Alerts / badges -------- */
+
 
 .alert-info {
     border-radius: var(--radius-md);
@@ -325,7 +320,7 @@ h2 {
     color: #bfdbfe;
 }
 
-/* Calendar legend badges you already have */
+
 .badge.bg-success {
     background: linear-gradient(135deg, #22c55e, #16a34a) !important;
 }
@@ -338,7 +333,6 @@ h2 {
     background: linear-gradient(135deg, #6b7280, #4b5563) !important;
 }
 
-/* -------- Footer -------- */
 
 .app-footer {
     position: relative;
@@ -346,7 +340,7 @@ h2 {
     padding-bottom: 1.5rem;
     color: var(--app-muted);
 }
-/* ---------- Calendar tiles ---------- */
+
 
 .calendar-filters {
     background: rgba(15, 23, 42, 0.85);
@@ -394,7 +388,7 @@ h2 {
     opacity: 0.9;
 }
 
-/* states */
+
 .calendar-day-free {
     background-image: radial-gradient(circle at 10% 0, rgba(34, 197, 94, 0.65), rgba(21, 128, 61, 0.9));
 }
@@ -418,12 +412,11 @@ h2 {
     border-color: var(--accent);
 }
 
-/* legend tweak */
+
 .calendar-legend .badge {
     border-radius: 999px;
     font-size: 0.78rem;
-}
-/* === SmartAppt dashboard home === */
+
 
 .dashboard-wrapper {
     min-height: calc(100vh - 120px);
@@ -445,7 +438,7 @@ h2 {
     overflow: hidden;
 }
 
-    /* փափուկ լուսավոր շփորված շրջանակ */
+  
     .hero-card::before {
         content: "";
         position: absolute;
@@ -587,7 +580,7 @@ h2 {
     flex-shrink: 0;
 }
 
-/* hover animation */
+
 .hero-link:hover {
     transform: translateY(-2px);
     background: radial-gradient(circle at top left, rgba(59, 130, 246, 0.25), rgba(15, 23, 42, 0.95));
@@ -650,7 +643,7 @@ h2 {
     color: #9ca3af;
 }
 
-/* soft appear animation for whole card */
+
 .animate-in {
     opacity: 0;
     transform: translateY(8px) scale(0.99);
@@ -667,27 +660,25 @@ h2 {
 
 
 
-/* === DASHBOARD === */
+
 
 .dashboard-page {
     max-width: 1200px;
 }
 
-/* Title glow */
 .text-glow {
     color: #f5f7ff;
     text-shadow: 0 0 12px rgba(102, 178, 255, 0.6);
     letter-spacing: 0.04em;
 }
 
-/* small business selector form */
 .dashboard-business-form .form-control {
     background-color: rgba(3, 10, 30, 0.9);
     border-color: rgba(120, 160, 230, 0.6);
     color: #e6edff;
 }
 
-/* STAT CARDS */
+
 .dash-card {
     position: relative;
     border-radius: 18px;
@@ -741,7 +732,7 @@ h2 {
     color: rgba(186, 204, 255, 0.8);
 }
 
-/* տարբեր գույներով եզրեր */
+
 .gradient-card-1 {
     box-shadow: 0 0 0 1px rgba(0, 201, 255, 0.3), 0 16px 40px rgba(0, 0, 0, 0.75);
 }
@@ -758,7 +749,6 @@ h2 {
     box-shadow: 0 0 0 1px rgba(180, 144, 255, 0.35), 0 16px 40px rgba(0, 0, 0, 0.75);
 }
 
-/* PANEL CARDS */
 .panel-card {
     border-radius: 18px;
     border: 1px solid rgba(145, 180, 255, 0.15);
@@ -780,7 +770,6 @@ h2 {
     padding: 16px 18px 18px;
 }
 
-/* LINKS */
 .dashboard-links {
     list-style: none;
     padding-left: 0;
@@ -821,12 +810,12 @@ h2 {
 .text-accent {
     color: #4dfcff;
 }
-/* === Base text color === */
+
 body {
-    color: #ffffff; /* amboxj text@ spitak */
+    color: #ffffff; 
 }
 
-/* Headlines, labels */
+
 h1, h2, h3, h4, h5, h6,
 label,
 .form-label,
@@ -840,7 +829,7 @@ label,
     color: #ffffff;
 }
 
-/* Inputs / selects / textareas */
+
 .form-control,
 .form-control:focus,
 .form-select,
@@ -849,25 +838,24 @@ input,
 select,
 textarea {
     color: #ffffff;
-    background-color: rgba(6, 20, 45, 0.95); /* kaxvacq mexquyn depi manramasnoq */
+    background-color: rgba(6, 20, 45, 0.95); 
     border-color: #1d9fff;
 }
 
-    /* Placeholder-ner@ el qich bac guyn, vor tesni, vor placeholder e */
+  
     .form-control::placeholder,
     input::placeholder,
     textarea::placeholder {
         color: rgba(255, 255, 255, 0.55);
     }
 
-/* Tables – bookings, services և այլն */
 .table,
 .table th,
 .table td {
     color: #ffffff;
 }
 
-/* Alerts, messages */
+
 .alert,
 .alert-info,
 .alert-warning,
