@@ -1,6 +1,10 @@
 ﻿@page
 @model WebApplication1.Pages.IndexModel
 
+@{
+    ViewData["Title"] = "Dashboard";
+}
+
 <div class="dashboard-page container-fluid py-5">
     <div class="row mb-4">
         <div class="col-md-8">
@@ -30,7 +34,7 @@
         <div class="alert alert-warning">@Model.Message</div>
     }
 
-    <!-- STAT CARDS (3 հատ) -->
+    <!-- STAT CARDS -->
     <div class="row g-4 mb-4">
         <div class="col-md-4">
             <div class="dash-card gradient-card-1">

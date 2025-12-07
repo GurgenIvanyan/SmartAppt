@@ -1,4 +1,4 @@
-<Project Sdk="Microsoft.NET.Sdk.Web">
+﻿<Project Sdk="Microsoft.NET.Sdk.Web">
 
   <PropertyGroup>
     <TargetFramework>net8.0</TargetFramework>
@@ -8,6 +8,7 @@
 
   <ItemGroup>
     <ProjectReference Include="..\src\Business\Business.SmartAppt\Business.SmartAppt.csproj" />
+    <ProjectReference Include="..\src\Common\Common\Common.csproj" />
     <ProjectReference Include="..\src\Data\Data.SmartAppt.SQL\Data.SmartAppt.SQL.csproj" />
   </ItemGroup>
 

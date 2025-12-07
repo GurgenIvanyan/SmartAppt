@@ -10,11 +10,9 @@ namespace Business.SmartAppt.Services.Implementation
 {
     public class BusinessService : IBusinessService
     {
-        // ---- Logger ----
         private static readonly ILogger _log =
             AppLoggerFactory.CreateLogger<BusinessService>();
 
-        // ---- Repositories ----
         protected readonly IBookingRepository BookingRepository;
         protected readonly ICustomerRepository CustomerRepository;
         protected readonly IServiceRepository ServiceRepository;
